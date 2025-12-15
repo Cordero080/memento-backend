@@ -1,10 +1,12 @@
 /**
  * ===========================================
- * USER MODEL - COLIN's TASK
+ * USER MODEL - COLIN's TASK - COMPLETED
  * ===========================================
  */
 
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const validator = require("validator"); // Imported for clean email validation
 
 // TODO: Define the userSchema - DONE
 const userSchema = new mongoose.Schema(
@@ -33,4 +35,4 @@ const userSchema = new mongoose.Schema(
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+module.exports = mongoose.model("User", userSchema);
