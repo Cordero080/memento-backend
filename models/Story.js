@@ -49,24 +49,35 @@ const mongoose = require("mongoose");
  * - This lets us use .populate('author') to get the full user data
  */
 
-// TODO: Define the storySchema
 const storySchema = new mongoose.Schema(
   {
-    // TODO: Add title field
-    // - type: String
-    // - required: true
-    // - trim: true
-    // TODO: Add content field
-    // - type: String
-    // - required: true
-    // TODO: Add author field (reference to User)
-    // - type: mongoose.Schema.Types.ObjectId
-    // - ref: 'User'
-    // - required: true
-    // TODO: Add likes field (array of User references)
-    // - This is an array, so use [ ] around the object
-    // - type: mongoose.Schema.Types.ObjectId
-    // - ref: 'User'
+    // title: String, required, trimmed
+    title: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    // content: String, required
+    content: {
+      type: String,
+      required: true,
+    },
+
+    // author: Reference to User model (ObjectId)
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
+    // likes: Array of User ObjectIds
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );
